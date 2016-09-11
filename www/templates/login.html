@@ -1,0 +1,37 @@
+<ion-view view-title="Login">
+  <ion-pane>
+    <ion-nav-bar class="tt-maroon">
+    </ion-nav-bar>
+
+    <ion-content>
+      <div class="text-center padding">
+        <img src="../img/tt.png" height="214px" width="125px">
+      </div>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"> Email </span>
+          <input type="email" placeholder="Email" ng-model="user.email">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label"> Password </span>
+          <input type="password" placeholder="Password" ng-model="user.password">
+        </label>
+      </div>
+      <div class="list list-inset">
+        <button class="button button-block tt-maroon" ng-click="login(user)">
+          Login
+        </button>
+        <button class="button button-block button-positive" ng-click="authWithFacebook()">
+          <span class="button-icon ion-social-facebook"></span> Sign in with Facebook
+        </button>
+      </div>
+    </ion-content>
+
+    <ion-footer-bar class="footer-border" id="footer-margin">
+      <div class="button-bar">
+        <a class="button button-clear button-dark" href="#/register"> Register </a>
+        <a class="button button-clear button-dark" href="#/forgot-pass"> Forgot Password </a>
+      </div>
+    </ion-footer-bar>
+  </ion-pane>
+</ion-view>

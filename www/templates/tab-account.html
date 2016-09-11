@@ -1,0 +1,66 @@
+<ion-view view-title="Account">
+  <ion-nav-bar class="tt-maroon">
+  </ion-nav-bar>
+
+  <ion-content>
+    <div class="text-center padding">
+      <img class="img-circle" src="{{photoURL}}" height="100" width="100">
+    </div>
+    <div class="list" style="margin-right: -2px;">
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-ios-people icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Class </h2>
+          <p id="account-margin"> Omicron </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-person icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Name </h2>
+          <p id="account-margin"> {{name}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-email icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Email </h2>
+          <p id="account-margin"> {{email}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-ios-telephone icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Phone Number </h2>
+          <p id="account-margin"> (310)-702-2101 </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-ios-briefcase icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Major </h2>
+          <p id="account-margin"> Computer Engineering </p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <a class="button button-block tt-maroon" href="#/tab/account/pass-update">
+        Update Password
+      </a>
+      <a class="button button-block tt-maroon" href="#" ng-click="auth.signOut()">
+        Sign Out
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

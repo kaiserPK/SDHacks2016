@@ -1,0 +1,28 @@
+<ion-view view-title="Update Password">
+  <ion-pane>
+    <ion-nav-bar class="tt-maroon">
+      <ion-nav-back-button id="back-btn-color"></ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-content>
+      <div class="text-center padding">
+        <img src="../../img/tt.png" height="214px" width="125px">
+      </div>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"> Old Password </span>
+          <input type="password" placeholder="Old Password" ng-model="user.oldPassword">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label"> New Password </span>
+          <input type="password" placeholder="New Password" ng-model="user.newPassword">
+        </label>
+      </div>
+      <div class="list list-inset">
+        <button class="button button-block tt-maroon" ng-click="update(user)">
+          Update Password
+        </button>
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

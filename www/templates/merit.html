@@ -1,0 +1,53 @@
+<ion-view view-title="Merit/Demerit">
+  <ion-nav-bar class="tt-maroon">
+    <ion-nav-back-button id="back-btn-color"></ion-nav-back-button>
+  </ion-nav-bar>
+
+  <ion-content>
+    <div class="text-center padding">
+      <img src="../img/tt.png" height="150" width="90">
+    </div>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Active Name </span>
+        <input type="text" placeholder="Active Name" ng-model="merit.active" required>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Reason </span>
+        <input type="text" placeholder="Reason" ng-model="merit.reason" required>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Amount </span>
+        <input type="number" placeholder="Amount" ng-model="merit.amount" min="1" max="100" required>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Secret Code </span>
+        <input type="password" placeholder="Secret Code" ng-model="merit.code" required>
+      </label>
+    </div>
+    <div class="list list-inset" id="head-margin">
+      <div class="button-bar">
+        <button class="button button-block tt-gold" ng-click="addMerit(merit)">
+          <div class="row">
+            <div class="col col-20">
+              <i class="icon ion-plus-round"></i>
+            </div>
+            <div class="col col-80">
+              Merit
+            </div>
+          </div>
+        </button>
+        <button class="button button-block tt-maroon" ng-click="addDemerit(merit)">
+          <div class="row">
+            <div class="col col-20">
+              <i class="icon ion-minus-round"></i>
+            </div>
+            <div class="col col-80">
+              Demerit
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,44 @@
+<ion-view view-title="Merit Book">
+  <ion-nav-bar class="tt-maroon">
+  </ion-nav-bar>
+
+  <ion-content class="padding" id="view-margin" style="margin-bottom: 25px;">
+    <div class="merit-border" id="txt-margin" ng-repeat="merit in merits | orderBy:'date'">
+      <div class="row">
+        <div class="col col-67" id="head-margin">
+          <h5> {{merit.active}} </h5>
+        </div>
+        <div class="col col-33" id="merit-date">
+          <p class="msg-font"> {{merit.date | date:'short'}} </p>
+        </div>
+      </div>
+      <div class="row" id="body-margin">
+        <div class="col col-67">
+          <p> {{merit.reason}} </p>
+        </div>
+        <div class="col col-33" id="merit-margin">
+          <p> Amount: {{merit.amount}} </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar id="merit-footer">
+    <div class="row merit-border">
+      <div class="col col-90" id="head-margin" style="text-align: center;">
+        <h4 style="margin-right: -40px;"> Total Merits: {{total}} </h4>
+      </div>
+      <div class="col col-10" style="margin-top: -10px;">
+        <i class="icon ion-chevron-up" ng-click="scrollTop()"></i>
+        <i class="icon ion-chevron-down" ng-click="scrollBottom()"></i>
+      </div>
+    </div>
+    <div class="row" id="merit-btn-margin">
+      <div class="col">
+        <a class="button button-block footer-button tt-maroon" href="#/tab/merit-book/merit">
+          Merit/Demerit
+        </a>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

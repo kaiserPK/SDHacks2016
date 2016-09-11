@@ -1,0 +1,144 @@
+/* Empty. Add your own CSS if you like */
+#view-margin {
+  margin-top: 5px;
+}
+
+.img-circle {
+  border-radius: 10%;
+}
+
+#txt-margin {
+  margin-top: -15px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+#head-margin {
+  margin-top: -10px;
+}
+
+#body-margin {
+  margin-top: -27px;
+}
+
+#footer-margin {
+  margin-bottom: 10px;
+}
+
+#date-margin {
+  color: #a9a9a9;
+  padding-top: 4px;
+  margin-left: 75px;
+  margin-right: -75px;
+}
+
+#merit-date {
+  color: #a9a9a9;
+  padding-top: 4px;
+}
+
+#merit-footer {
+  margin-bottom: 20px;
+  margin-left: -10px;
+  height: 70px;
+  display: block;
+  width: 105%;
+}
+
+#merit-btn-margin {
+  margin-top: -27px;
+}
+
+#account-margin {
+  margin-top: 10px;
+}
+
+#acc-btn-margin {
+  margin-top: -20px;
+}
+
+#msg-margin {
+  margin-top: -10px;
+  margin-left: -40px;
+}
+
+#heart-margin {
+  margin-left: 145px;
+  margin-right: -145px;
+}
+
+#merit-margin {
+  text-align: left;
+}
+
+#like-size {
+  margin-top: 6px;
+  font-size: 20px;
+}
+
+#liked-size {
+  margin-top: 6px;
+  font-size: 20px;
+  color: #e00;
+}
+
+.msg-font {
+  font-size: 12px;
+}
+
+.msg-input {
+  width: 100%;
+}
+
+.tt-maroon {
+  background-color: #800 !important;
+  color: #ffd700;
+}
+
+.list > .tt-maroon:hover {
+  background-color: #800;
+  color: #ffd700;
+}
+
+.tt-gold {
+  background-color: #ffd700 !important;
+  color: #800;
+}
+
+.tab-color {
+  color: #800;
+}
+
+#back-btn-color {
+  color: #ffd700;
+}
+
+.tab-details {
+  border-top: 1px solid #fff;
+  opacity: 1;
+}
+
+.footer-button {
+  width: 100%;
+}
+
+.footer-border {
+  border-top: 2px groove;
+}
+
+.btn-border {
+  border: 1px solid #800;
+}
+
+.merit-border {
+  border-top: 1px groove;
+}
+
+.icon-size {
+  font-size: 32px;
+  color: #800;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}

@@ -1,0 +1,24 @@
+<ion-view view-title="Forgot Password">
+  <ion-pane>
+    <ion-nav-bar class="tt-maroon">
+      <ion-nav-back-button id="back-btn-color"></ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-content>
+      <div class="text-center padding">
+        <img src="../img/tt.png" height="214px" width="125px">
+      </div>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"> Email </span>
+          <input type="email" placeholder="Email" ng-model="user.email">
+        </label>
+      </div>
+      <div class="list list-inset">
+        <button class="button button-block tt-maroon" ng-click="reset(user)">
+          Reset Password
+        </button>
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

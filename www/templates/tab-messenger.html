@@ -1,0 +1,47 @@
+<ion-view view-title="Messenger">
+  <ion-pane>
+    <ion-nav-bar class="tt-maroon">
+    </ion-nav-bar>
+
+    <ion-content class="padding" id="view-margin" style="margin-bottom: -15px;">
+      <div class="row" id="txt-margin" ng-repeat="message in messages | orderBy:'time'">
+        <div class="col col-25">
+          <a href="#/tab/messenger/user-detail">
+            <img class="img-circle" ng-src="{{message.photo}}" height="40px" width="40px">
+          </a>
+        </div>
+        <div class="col col-75" id="msg-margin">
+          <div class="row">
+            <div class="col" id="head-margin">
+              <h5> {{message.name}} </h5>
+            </div>
+            <div class="col" id="date-margin">
+              <p class="msg-font"> {{message.time | date:'short'}} </p>
+            </div>
+          </div>
+          <div class="row" id="body-margin">
+            <div class="col">
+              <p style="margin-right: -150px;"> {{message.text}} </p>
+            </div>
+            <div class="col" id="heart-margin">
+              <i class="icon ion-ios-heart-outline" id="like-size" ng-click="like(message)" ng-hide="message.likes"></i>
+              <i class="icon ion-ios-heart" id="liked-size" ng-click="like(message)" ng-show="message.likes"></i>
+              <span style="font-size: 12px;" ng-show="message.likes">
+                {{message.likes}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+
+    <ion-footer-bar align-title="left" class="add-msg footer-border">
+      <form class="title" ng-submit="addMessage(message)">
+        <input class="msg-input" type="text" placeholder="Send Message" ng-model="message.text" class="msg-input" required>
+      </form>
+      <button type="submit" class="button button-clear button-stable" ng-click="addMessage(message)">
+        <span class="button-icon ion-android-send"><span>
+      </button>
+    </ion-footer-bar>
+  </ion-pane>
+</ion-view>
