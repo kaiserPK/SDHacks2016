@@ -10,7 +10,7 @@ angular.module('app.controllers')
       });
     }).catch(function(error) {
       var resetError = $ionicPopup.alert({
-        title: 'Failure!',
+        title: 'Error!',
         template: 'Please check if this is the correct email!'
       });
     });

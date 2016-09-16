@@ -1,29 +1,25 @@
 <ion-view view-title="Register">
   <ion-pane>
-    <ion-nav-bar class="tt-maroon">
-      <ion-nav-back-button id="back-btn-color"></ion-nav-back-button>
-    </ion-nav-bar>
-
     <ion-content>
       <div class="text-center padding">
-        <img src="../img/tt.png" height="214px" width="125px">
+        <img class="logo-size" src="img/tt.png">
       </div>
       <div class="list">
         <label class="item item-input item-floating-label">
           <span class="input-label"> Name </span>
-          <input type="text" placeholder="Name" ng-model="user.name">
+          <input type="text" id="field2" placeholder="Name" ng-model="user.name" focus>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label"> Email </span>
-          <input type="email" placeholder="Email" ng-model="user.email">
+          <input type="email" id="field3" placeholder="Email" ng-model="user.email" focus>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label"> Password </span>
-          <input type="password" placeholder="Password (5-30 characters)" ng-model="user.password">
+          <input type="password" id="field4" placeholder="Password (5-30 characters)" ng-model="user.password" focus>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label"> Secret Code </span>
-          <input type="password" placeholder="Secret Code" ng-model="user.code">
+          <input type="password" id="field5" placeholder="Secret Code" ng-model="user.code">
         </label>
       </div>
       <div class="list list-inset">

@@ -1,12 +1,12 @@
 angular.module('app.controllers')
-.controller('MeritBookCtrl', function($scope, $firebaseArray, $ionicScrollDelegate, $timeout, userRef) {
+.controller('MeritBookCtrl', function($scope, $firebaseArray, $ionicScrollDelegate, $timeout, userRef, userService) {
   var ref = userRef.child("merits");
   var currUser = firebase.auth().currentUser;
-  if ( currUser.uid != null ) {
+  if ( currUser != null ) {
     var uid = currUser.uid;
   }
   else {
-    var uid = currUser.user.uid;
+    var uid = userService.getFacebookID();
   }
   var totalRef = firebase.database().ref('users/' + uid + '/total');
   $scope.merits = $firebaseArray(ref);
@@ -26,7 +26,7 @@ angular.module('app.controllers')
       $scope.total = snapshot.val().total;
       $timeout(function() {
         $ionicScrollDelegate.scrollBottom(true);
-      }, 455);
+      }, 500);
     }
   });
 

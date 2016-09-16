@@ -1,17 +1,27 @@
 angular.module('app.controllers')
-.controller('MsgCtrl', function($scope, $firebaseAuth, $firebaseArray, $ionicScrollDelegate, $timeout, userRef, userService) {
+.controller('MsgCtrl', function($scope, $firebaseArray, $ionicScrollDelegate, $timeout, userRef, userService) {
+  var fbID = userService.getFacebookID();
   var msgRef = firebase.database().ref().child("messages");
   $scope.messages = $firebaseArray(msgRef);
-  $scope.signedInUser = userService.getUser();
 
-  userRef.once('value').then(function(snapshot) {
-    $scope.photoURL = snapshot.val().photoURL;
-    $scope.name = snapshot.val().name;
-  });
+  if ( fbID != null ) {
+    firebase.database().ref('users/' + fbID).once('value').then(function(snapshot) {
+      $scope.photoURL = snapshot.val().photoURL;
+      $scope.name = snapshot.val().name;
+      $scope.email = snapshot.val().email;
+    });
+  }
+  else {
+    userRef.once('value').then(function(snapshot) {
+      $scope.photoURL = snapshot.val().photoURL;
+      $scope.name = snapshot.val().name;
+      $scope.email = snapshot.val().email;
+    });
+  }
 
   $timeout(function() {
     $ionicScrollDelegate.scrollBottom();
-  }, 455);
+  }, 500);
 
   $scope.like = function(message) {
     var likeRef = firebase.database().ref('messages/' + message.$id);
@@ -20,7 +30,9 @@ angular.module('app.controllers')
       $scope.likes = 0;
     }
     likeRef.on('value', function(snapshot) {
-      $scope.likes = snapshot.val().likes;
+      if ( snapshot.val() != null ) {
+        $scope.likes = snapshot.val().likes;
+      }
     });
 
     $scope.likes++;
@@ -28,16 +40,20 @@ angular.module('app.controllers')
     likeRef.update({
       likes: $scope.likes
     });
-  }
+  };
+
+  $scope.seeProfile = function(message) {
+    userService.setMessageID(message.$id);
+  };
 
   $scope.addMessage = function(message) {
     message.time = new Date().getTime();
     message.photo = $scope.photoURL;
     message.name = $scope.name;
+    message.email = $scope.email;
     message.likes = 0;
     $scope.messages.$add(message);
     message.text = "";
     $ionicScrollDelegate.scrollBottom(true);
-    console.log(message);
   };
 });

@@ -1,0 +1,22 @@
+<ion-view view-title="Update Profile">
+  <ion-content>
+    <div class="text-center padding">
+      <img class="prof-size" src="{{photoURL}}">
+    </div>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Phone Number </span>
+        <input type="text" id="field2" placeholder="Phone Number" ng-model="user.phone" focus required>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Major </span>
+        <input type="text" id="field3" placeholder="Major" ng-model="user.major" required>
+      </label>
+    </div>
+    <div class="list list-inset">
+      <button class="button button-block tt-maroon" ng-click="updateUser(user)">
+        Update
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

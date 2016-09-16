@@ -1,89 +1,128 @@
 /* Empty. Add your own CSS if you like */
-#view-margin {
-  margin-top: 5px;
-}
-
-.img-circle {
-  border-radius: 10%;
-}
-
 #txt-margin {
-  margin-top: -15px;
-  margin-left: -10px;
-  margin-right: -10px;
+  margin-top: -0.9375rem;
 }
 
 #head-margin {
-  margin-top: -10px;
+  margin-top: -0.625rem;
+}
+
+#name-margin {
+  margin-top: -0.325rem;
 }
 
 #body-margin {
-  margin-top: -27px;
+  margin-top: -1.4rem;
+  margin-left: -0.3rem;
+  font-size: 15px;
 }
 
 #footer-margin {
-  margin-bottom: 10px;
+  position: absolute;
+  height: 50px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  }
+  .platform-ios #footer-margin {
+    position: static;
+    margin-top: 6.2rem;
 }
 
 #date-margin {
   color: #a9a9a9;
-  padding-top: 4px;
-  margin-left: 75px;
-  margin-right: -75px;
+  padding-top: 0.25rem;
+  margin-left: 1rem;
+}
+
+#merit-txt {
+  margin-top: -0.9375rem;
+  margin-left: -0.595rem;
+  margin-right: -0.594rem;
+}
+
+#merit-active {
+  margin-top: -0.625rem;
+  padding-left: 1rem;
+  }
+  .platform-android #merit-active {
+    padding-left: 1.5rem;
+}
+
+#merit-body {
+  margin-top: -1.4rem;
+  font-size: 15px;
+  padding-left: 1rem;
+}
+  .platform-android #merit-body {
+    padding-left: 1.5rem;
 }
 
 #merit-date {
   color: #a9a9a9;
-  padding-top: 4px;
+  padding-top: 0.25rem;
+  margin-left: 1rem;
 }
 
 #merit-footer {
-  margin-bottom: 20px;
-  margin-left: -10px;
-  height: 70px;
+  margin-bottom: 1.25rem;
+  margin-left: -0.625rem;
+  height: 4.375rem;
   display: block;
   width: 105%;
 }
 
 #merit-btn-margin {
-  margin-top: -27px;
+  margin-top: -1.6875rem;
 }
 
 #account-margin {
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 #acc-btn-margin {
-  margin-top: -20px;
+  margin-top: -1.25rem;
 }
 
 #msg-margin {
-  margin-top: -10px;
-  margin-left: -40px;
+  margin-top: -0.625rem;
+  margin-left: -2.5rem;
+  }
+  .platform-android #msg-margin {
+    margin-left: -3rem;
 }
 
 #heart-margin {
-  margin-left: 145px;
-  margin-right: -145px;
+  margin-top: -1rem;
+  margin-left: 5rem;
+  }
+  .platform-android #heart-margin {
+    margin-left: 5.5rem;
 }
 
-#merit-margin {
+#merit-amount {
+  padding-left: 1.013rem;
   text-align: left;
 }
 
 #like-size {
-  margin-top: 6px;
-  font-size: 20px;
+  font-size: 1.5rem;
+  color: #a9a9a9;
+  }
+  .platform-android #like-size {
+    font-size: 1.8rem;
 }
 
 #liked-size {
-  margin-top: 6px;
-  font-size: 20px;
+  font-size: 1.5rem;
   color: #e00;
+  }
+  .platform-android #liked-size {
+    font-size: 1.8rem;
 }
 
 .msg-font {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .msg-input {
@@ -114,7 +153,8 @@
 }
 
 .tab-details {
-  border-top: 1px solid #fff;
+  border-top: 1px groove;
+  padding-top: 7px;
   opacity: 1;
 }
 
@@ -123,7 +163,7 @@
 }
 
 .footer-border {
-  border-top: 2px groove;
+  border-top: 1px groove;
 }
 
 .btn-border {
@@ -134,9 +174,35 @@
   border-top: 1px groove;
 }
 
+.logo-size {
+  height: 32.125vh;
+  width: 18.75vh;
+}
+
+.sm-logo-size {
+  height: 23vh;
+  width: 14vh;
+}
+
+.user-size {
+  height: 6vh;
+  width: 6vh;
+  border-radius: 10%;
+}
+
+.prof-size {
+  height: 15vh;
+  width: 15vh;
+  border-radius: 10%;
+}
+
 .icon-size {
-  font-size: 32px;
+  font-size: 2rem;
   color: #800;
+}
+
+.sm-icon-size {
+  font-size: 1.2rem;
 }
 
 input:-webkit-autofill {

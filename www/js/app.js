@@ -125,6 +125,15 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.services'])
         }
       }
     })
+    .state('tab.user-update', {
+      url: '/account/user-update',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/user-update.html',
+          controller: 'UserUpdateCtrl'
+        }
+      }
+    })
     .state('tab.pass-update', {
       url: '/account/pass-update',
       views: {
@@ -134,7 +143,6 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.services'])
         }
       }
     });
-
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

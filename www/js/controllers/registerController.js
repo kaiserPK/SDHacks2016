@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 .controller('RegisterCtrl', function($scope, $firebaseAuth, $state, $ionicPopup, userService) {
   var auth = firebase.auth();
-  var imgURL = "https://pbs.twimg.com/profile_images/534594352291774464/UdYxN8ov_400x400.jpeg";
+  var imgURL = "img/default.jpeg";
   var user = null;
 
   $scope.register = function(user) {
@@ -23,14 +23,14 @@ angular.module('app.controllers')
         $state.go('login');
       }).catch(function(error) {
         var signError = $ionicPopup.alert({
-          title: 'Failed!',
+          title: 'Error!',
           template: 'Please check your credentials!'
         });
       });
     }
     else {
       var codeError = $ionicPopup.alert({
-        title: 'Failed!',
+        title: 'Error!',
         template: 'Please enter the correct secret code!'
       });
     }

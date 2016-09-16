@@ -1,27 +1,20 @@
 angular.module('app.services')
 .service('userService', function($ionicPopup) {
-  var signedInUser;
-  var password;
-  var photoURL;
+  var messageID;
+  var facebookID;
 
   return {
-    getUser: function() {
-      return signedInUser;
+    getMessageID: function() {
+      return messageID;
     },
-    setUser: function(user) {
-      signedInUser = user;
+    setMessageID: function(id) {
+      messageID = id;
     },
-    getPassword: function() {
-      return password;
+    getFacebookID: function() {
+      return facebookID;
     },
-    setPassword: function(pass) {
-      password = pass;
-    },
-    getPhotoURL: function() {
-      return photoURL;
-    },
-    setPhotoURL: function(url) {
-      photoURL = url;
+    setFacebookID: function(fbID) {
+      facebookID = fbID;
     },
     writeUserData: function(uid, name, email, password, imageURL) {
       firebase.database().ref('users/' + uid).set({
@@ -33,20 +26,32 @@ angular.module('app.services')
     },
     notInt: function() {
       var notInt = $ionicPopup.alert({
-        title: 'Failed!',
+        title: 'Error!',
         template: 'Please enter an integer!'
       });
     },
     not5: function() {
       var not5 = $ionicPopup.alert({
-        title: 'Failed!',
+        title: 'Error!',
         template: 'Please enter an integer that is a multiple of 5!'
       });
     },
     wrongCode: function() {
       var wrongCode = $ionicPopup.alert({
-        title: 'Failed!',
+        title: 'Error!',
         template: 'Please enter the correct secret code!'
+      });
+    },
+    profPicSuccess: function() {
+      var profPicSuccess = $ionicPopup.alert({
+        title: 'Success!',
+        template: 'Your profile picture has been changed!'
+      });
+    },
+    profPicError: function() {
+      var profPicError = $ionicPopup.alert({
+        title: 'Error!',
+        template: 'There was a problem changing your profile picture!'
       });
     }
   };

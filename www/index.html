@@ -40,6 +40,7 @@
     <script src="js/controllers/userDetailController.js"></script>
     <script src="js/controllers/loginController.js"></script>
     <script src="js/controllers/accountController.js"></script>
+    <script src="js/controllers/userUpdateController.js"></script>
     <script src="js/controllers/chatsController.js"></script>
     <script src="js/controllers/chatDetailController.js"></script>
     <script src="js/controllers/registerController.js"></script>
@@ -49,16 +50,16 @@
     <script src="js/controllers/meritController.js"></script>
     <script src="js/services/services.js"></script>
     <script src="js/services/userService.js"></script>
-    <script src="js/services/loginService.js"></script>
     <script src="js/services/userFactory.js"></script>
     <script src="js/services/chatsFactory.js"></script>
+    <script src="js/directives/focus.js"></script>
   </head>
   <body ng-app="app">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
+    <ion-nav-bar class="tt-maroon">
+      <ion-nav-back-button id="back-btn-color">
       </ion-nav-back-button>
     </ion-nav-bar>
     <!--

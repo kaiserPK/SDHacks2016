@@ -2,11 +2,11 @@ angular.module('app.controllers')
 .controller('MeritCtrl', function($scope, $firebaseArray, $state, userRef, userService) {
   var ref = userRef.child("merits");
   var currUser = firebase.auth().currentUser;
-  if ( currUser.uid != null ) {
+  if ( currUser != null ) {
     var uid = currUser.uid;
   }
   else {
-    var uid = currUser.user.uid;
+    var uid = userService.getFacebookID();
   }
   var totalRef = firebase.database().ref('users/' + uid + '/total');
   $scope.merits = $firebaseArray(ref);

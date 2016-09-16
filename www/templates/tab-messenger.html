@@ -1,31 +1,29 @@
 <ion-view view-title="Messenger">
   <ion-pane>
-    <ion-nav-bar class="tt-maroon">
-    </ion-nav-bar>
-
-    <ion-content class="padding" id="view-margin" style="margin-bottom: -15px;">
+    <ion-content class="padding" style="margin-bottom: -0.9375rem;">
       <div class="row" id="txt-margin" ng-repeat="message in messages | orderBy:'time'">
         <div class="col col-25">
-          <a href="#/tab/messenger/user-detail">
-            <img class="img-circle" ng-src="{{message.photo}}" height="40px" width="40px">
+          <a href="#/tab/messenger/user-detail" ng-click="seeProfile(message)">
+            <img class="user-size" ng-src="{{message.photo}}">
           </a>
         </div>
         <div class="col col-75" id="msg-margin">
           <div class="row">
-            <div class="col" id="head-margin">
-              <h5> {{message.name}} </h5>
+            <div id="name-margin">
+              <h5><strong> {{message.name}} </strong></h5>
             </div>
-            <div class="col" id="date-margin">
+            <div id="date-margin">
               <p class="msg-font"> {{message.time | date:'short'}} </p>
             </div>
           </div>
           <div class="row" id="body-margin">
-            <div class="col">
-              <p style="margin-right: -150px;"> {{message.text}} </p>
+            <div class="col col-75">
+              <!-- "margin-right: -150px;" -->
+              <p style="margin-right: -4.5rem;"> {{message.text}} </p>
             </div>
-            <div class="col" id="heart-margin">
-              <i class="icon ion-ios-heart-outline" id="like-size" ng-click="like(message)" ng-hide="message.likes"></i>
-              <i class="icon ion-ios-heart" id="liked-size" ng-click="like(message)" ng-show="message.likes"></i>
+            <div class="col col-25" id="heart-margin">
+              <i class="icon ion-heart" id="like-size" ng-click="like(message)" ng-hide="message.likes"></i>
+              <i class="icon ion-heart" id="liked-size" ng-click="like(message)" ng-show="message.likes"></i>
               <span style="font-size: 12px;" ng-show="message.likes">
                 {{message.likes}}
               </span>
