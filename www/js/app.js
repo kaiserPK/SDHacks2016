@@ -74,7 +74,61 @@ angular.module('app', ['ionic', 'firebase', 'ngCordova', 'app.controllers', 'app
       }
     }
   })
+   
+  .state('my-bulb', {
+    url: '/my-bulb',
+    abstract: true,
+    templateUrl: 'templates/my-bulb.html'
+  })
+
+  .state('my-bulb.info', {
+    url: '/info',
+    views: {
+      'my-bulb-info': {
+        templateUrl: 'templates/my-bulb-info.html',
+        controller: 'MyBulbInfoCtrl'
+      }
+    }
+  })
   
+  .state('my-bulb.members', {
+      url: '/members',
+      views: {
+        'my-bulb-members': {
+          templateUrl: 'templates/my-bulb-members.html',
+          controller: 'MyBulbMembersCtrl'
+        }
+      }
+    })
+    .state('my-bulb.curr-info', {
+      url: '/members/curr-info',
+      views: {
+        'my-bulb-members': {
+          templateUrl: 'templates/member-info.html',
+          controller: 'MyBulbCurrInfoCtrl',
+        }
+      }
+    })
+    .state('my-bulb.pend-info', {
+      url: '/members/pend-info',
+      views: {
+        'my-bulb-members': {
+          templateUrl: 'templates/member-info.html',
+          controller: 'MyBulbPendInfoCtrl',
+        }
+      }
+    })
+
+  .state('my-bulb.chat', {
+    url: '/chat',
+    views: {
+      'my-bulb-chat': {
+        templateUrl: 'templates/my-bulb-chat.html',
+        controller: 'MyBulbChatCtrl',
+      }
+    }
+  })
+ 
   .state('tab.projects', {
     url: '/projects',
     views: {
@@ -84,13 +138,67 @@ angular.module('app', ['ionic', 'firebase', 'ngCordova', 'app.controllers', 'app
       }
     }
   })
-  
+
+  .state('project', {
+    url: '/project',
+    abstract: true,
+    templateUrl: 'templates/project.html'
+  })
+
+  .state('project.info', {
+    url: '/info',
+    views: {
+      'project-info': {
+        templateUrl: 'templates/project-info.html',
+        controller: 'ProjectInfoCtrl'
+      }
+    }
+  })
+
+  .state('project.members', {
+      url: '/members',
+      views: {
+        'project-members': {
+          templateUrl: 'templates/project-members.html',
+          controller: 'ProjectMembersCtrl'
+        }
+      }
+    })
+    .state('project.member-info', {
+      url: '/members/info',
+      views: {
+        'project-members': {
+          templateUrl: 'templates/member-info.html',
+          controller: 'ProjectMemberInfoCtrl'
+        }
+      }
+    })
+
+  .state('project.chat', {
+    url: '/chat',
+    views: {
+      'project-chat': {
+        templateUrl: 'templates/project-chat.html',
+        controller: 'ProjectChatCtrl'
+      }
+    }
+  })
+
   .state('tab.search', {
       url: '/search',
       views: {
         'tab-search': {
           templateUrl: 'templates/tab-search.html',
           controller: 'SearchCtrl'
+        }
+      }
+    })
+    .state('tab.searched-bulb', {
+      url: '/search/searched-bulb',
+      views: {
+        'tab-search': {
+          templateUrl: 'templates/searched-bulb.html',
+          controller: 'SearchedBulbCtrl'
         }
       }
     })
@@ -123,25 +231,16 @@ angular.module('app', ['ionic', 'firebase', 'ngCordova', 'app.controllers', 'app
         }
       }
     })
-    .state('tab.user-update', {
-        url: '/account/user-update',
-        views: {
-          'tab-account': {
-            templateUrl: 'templates/user-update.html',
-            controller: 'UserUpdateCtrl'
-          }
+    .state('tab.pass-update', {
+      url: '/account/pass-update',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/pass-update.html',
+          controller: 'PassUpdateCtrl'
         }
-      })
-      .state('tab.pass-update', {
-        url: '/account/user-update/pass-update',
-        views: {
-          'tab-account': {
-            templateUrl: 'templates/pass-update.html',
-            controller: 'PassUpdateCtrl'
-          }
-        }
-      });
-
+      }
+    })
+      
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 

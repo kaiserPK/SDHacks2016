@@ -1,0 +1,61 @@
+<ion-view>
+  <ion-nav-title>
+    Bulb Info
+    <button class="button button-clear" id="info-back" ng-click="goBack()">
+      <span style="font-size: 1.2rem;"> Go Back </span>
+    </button>
+  </ion-nav-title>
+
+  <ion-content>
+    <div class="text-center padding">
+      <img class="prof-size" src="img/bulb.png">
+    </div>
+    <div class="list">
+      <div class="row item">
+        <div class="col">
+          <h2> Name </h2>
+          <p> {{name}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col">
+          <h2> Languages </h2>
+          <p> {{languages}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col">
+          <h2> Category </h2>
+          <p> {{category}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col">
+          <h2> Skill Level </h2>
+          <p> {{skill}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col">
+          <h2> Location </h2>
+          <p> {{location}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col">
+          <h2> Description </h2>
+          <p> {{description}} </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="list list-inset">
+      <button class="button button-block button-calm" ng-click="openModal()">
+        Update Profile
+      </button>
+      <button class="button button-block button-calm" ng-click="transfer()">
+        Transfer Admin Rights
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

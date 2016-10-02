@@ -3,11 +3,12 @@
     <ion-list>
       <ion-item id="bulb-txt" ng-repeat="bulb in bulbs" ng-click="showInfo(bulb)">
         {{bulb.name}}
-        <ion-option-button class="button-calm" ng-click="delete(bulb)">
+        <ion-option-button class="button-assertive" ng-click="delete(bulb)">
+          <i class="icon ion-alert-circled" style="margin-right: 0.5rem;"></i>
           Delete Bulb
         </ion-option-button>
       </ion-item>
     </ion-list>
-    <button class="button icon ion-ios-lightbulb" id="bulb-btn" ng-click="openModal()"></button>
   </ion-content>
+  <button class="button icon ion-ios-lightbulb" id="bulb-btn" ng-click="openModal()"></button>
 </ion-view>

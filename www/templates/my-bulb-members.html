@@ -1,0 +1,52 @@
+<ion-view>
+  <ion-nav-title>
+    Bulb Members
+    <button class="button button-clear" id="member-back" ng-click="goBack()">
+      <span style="font-size: 1.2rem;"> Go Back </span>
+    </button>
+  </ion-nav-title>
+
+  <ion-content class="padding">
+    <ion-list>
+      <div class="member-txt">
+        <ion-item class="member-head">
+          <strong> Current Members </strong>
+        </ion-item>
+        <ion-item ng-repeat="curr in currentMem" ng-click="showInfo(curr)">
+          <div class="row">
+            <div class="col col-20">
+              <img class="user-size" ng-src="{{curr.photoURL}}">
+            </div>
+            <div class="col col-80">
+              <div class="member-name"> {{curr.name}} </div>
+            </div>
+            <ion-option-button class="button-assertive" ng-click="kick(curr)">
+              <i class="icon ion-alert-circled" style="margin-right: 0.5rem;"></i> 
+              Kick Member
+            </ion-option-button>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+    <ion-list>
+      <div class="member-txt">
+        <ion-item class="member-head">
+          <strong> Pending Members </strong>
+        </ion-item>
+        <ion-item ng-repeat="pend in pendingMem" ng-click="showInfo(pend)">
+        <div class="row">
+          <div class="col col-20">
+            <img class="user-size" ng-src="{{pend.photoURL}}">
+          </div>
+          <div class="col col-60">
+            <div class="member-name"> {{pend.name}} </div>
+          </div>
+          <div class="col col-20">
+            <i class="icon ion-ios-checkmark icon-size member-btn" ng-click="accept(pend)"></i>
+            <i class="icon ion-close-circled icon-size member-btn" ng-click="decline(pend)"></i>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

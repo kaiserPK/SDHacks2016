@@ -1,0 +1,43 @@
+<ion-view>
+  <ion-nav-title>
+    Bulb Chat
+    <button class="button button-clear" id="chat-back" ng-click="goBack()">
+      <span style="font-size: 1.2rem;"> Go Back </span>
+    </button>
+  </ion-nav-title>
+  
+  <ion-content class="padding" style="margin-bottom: -0.9375rem;">
+    <div class="row" id="txt-margin" ng-repeat="message in messages | orderBy:'time'">
+      <div class="col col-25">
+        <a href="#/tab/messenger/user-detail" ng-click="seeProfile(message)">
+          <img class="user-size" ng-src="{{message.photo}}">
+        </a>
+      </div>
+      <div class="col col-75" id="msg-margin">
+        <div class="row">
+          <div id="name-margin">
+            <h5><strong> {{message.name}} </strong></h5>
+          </div>
+          <div id="date-margin">
+            <p class="msg-font"> {{message.time | date:'short'}} </p>
+          </div>
+        </div>
+        <div class="row" id="body-margin">
+          <div class="col">
+            <!-- "margin-right: -150px;" -->
+            <p style="margin-right: -4.5rem;"> {{message.text}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar align-title="left" class="add-msg footer-border">
+    <form class="title" ng-submit="addMessage(message)">
+      <input class="msg-input" type="text" placeholder="Send Message" ng-model="message.text" class="msg-input" required>
+    </form>
+    <button type="submit" class="button button-clear button-stable" ng-click="addMessage(message)">
+      <span class="button-icon ion-android-send"><span>
+    </button>
+  </ion-footer-bar>
+</ion-view>

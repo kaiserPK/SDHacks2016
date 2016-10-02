@@ -1,6 +1,9 @@
 angular.module('app.controllers')
-.controller('BulbsCtrl', function($scope, $firebaseArray, $ionicModal, $ionicPopup, userRef, bulbRef) {
+.controller('BulbsCtrl', function($scope, $firebaseArray, $ionicModal, $ionicPopup, $state, userRef, projectRef, userService) {
+  var uid = firebase.auth().currentUser.uid;
   var countRef = userRef.child('counts');
+  var bulbRef = userRef.child('bulbs');
+  $scope.projects = $firebaseArray(projectRef);
   $scope.bulbs = $firebaseArray(bulbRef);
 
   countRef.once('value').then(function(snapshot) {
@@ -26,6 +29,12 @@ angular.module('app.controllers')
     }
   });
 
+  $scope.showInfo = function(bulb) {
+    userService.setBulbID(bulb.$id);
+    userService.setAdminID(uid);
+    $state.go('my-bulb.info');
+  };
+
   $scope.delete = function(bulb) {
     var deleteBulb = $ionicPopup.show({
       title: 'Delete Bulb',
@@ -35,7 +44,9 @@ angular.module('app.controllers')
         text: 'Yes',
         type: 'button-calm',
         onTap: function(e) {
+          var key = userService.getKey();
           $scope.bulbs.$remove(bulb);
+          projectRef.child(key).remove(); 
         }
       },
       {
@@ -56,15 +67,44 @@ angular.module('app.controllers')
   });
 
   $scope.openModal = function() {
-    $scope.bulb={};
+    $scope.bulb = {};
     $scope.modal.show();
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
   $scope.addBulb = function(bulb) {
-    $scope.bulbs.$add(bulb);
-    $scope.modal.hide();
+    if ( bulb.name == null || bulb.languages == null || bulb.category == null || bulb.skill == null || bulb.location == null || bulb.description == null ) {
+      var bulbError = $ionicPopup.show({
+        title: 'Error!',
+        template: 'Please fill out all the fields!',
+        cssClass: 'event-popup',
+        buttons: [{
+          text: 'OK',
+          type: 'button-calm',
+          onTap: function(e) {
+            bulbError.close();
+          }
+        }]
+      });
+    }
+    else {
+      userRef.once('value').then(function(snapshot) {
+        bulb.photoURL = snapshot.val().photoURL;
+        bulb.admin = snapshot.val().name;
+        bulb.adminID = firebase.auth().currentUser.uid;
+        $scope.projects.$add(bulb).then(function(ref) {
+          userService.setKey(ref.key);
+          $scope.bulbs.$add(bulb).then(function(ref) {
+            var key = userService.getKey();
+            projectRef.child(key).update({
+              bulbID: ref.key
+            });
+          });
+        });
+        $scope.modal.hide();
+      });
+    }
   };
   $scope.$on('$destroy', function() {
     $scope.modal.remove();

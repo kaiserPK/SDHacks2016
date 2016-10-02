@@ -2,6 +2,11 @@ angular.module('app.services')
 .service('userService', function($ionicPopup) {
   var messageID;
   var facebookID;
+  var bulbID;
+  var adminID;
+  var bulbKey;
+  var currID;
+  var pendID;
 
   return {
     getMessageID: function() {
@@ -16,42 +21,42 @@ angular.module('app.services')
     setFacebookID: function(fbID) {
       facebookID = fbID;
     },
+    getBulbID: function() {
+      return bulbID;
+    },
+    setBulbID: function(id) {
+      bulbID = id;
+    },
+    getAdminID: function() {
+      return adminID;
+    },
+    setAdminID: function(id) {
+      adminID = id;
+    },
+    getKey: function() {
+      return bulbKey;
+    },
+    setKey: function(key) {
+      bulbKey = key;
+    },
+    getCurrID: function() {
+      return currID;
+    },
+    setCurrID: function(id) {
+      currID = id;
+    },
+    getPendID: function() {
+      return pendID;
+    },
+    setPendID: function(id) {
+      pendID = id;
+    },
     writeUserData: function(uid, name, email, password, imageURL) {
       firebase.database().ref('users/' + uid).set({
         name: name,
         email: email,
         password: password,
         photoURL: imageURL
-      });
-    },
-    notInt: function() {
-      var notInt = $ionicPopup.alert({
-        title: 'Error!',
-        template: 'Please enter an integer!'
-      });
-    },
-    noActive: function() {
-      var noActive = $ionicPopup.alert({
-        title: 'Error!',
-        template: 'Please enter an Active!'
-      });
-    },
-    noReason: function() {
-      var noReason = $ionicPopup.alert({
-        title: 'Error!',
-        template: 'Please enter a reason!'
-      });
-    },
-    not5: function() {
-      var not5 = $ionicPopup.alert({
-        title: 'Error!',
-        template: 'Please enter an integer that is a multiple of 5!'
-      });
-    },
-    wrongCode: function() {
-      var wrongCode = $ionicPopup.alert({
-        title: 'Error!',
-        template: 'Please enter the correct secret code!'
       });
     },
     profPicSuccess: function() {

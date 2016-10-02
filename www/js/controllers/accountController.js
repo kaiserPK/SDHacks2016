@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('AccountCtrl', function($scope, $state, $q, $ionicPopup, $ionicLoading, userRef, userService) {
+.controller('AccountCtrl', function($scope, $state, $ionicModal, $ionicPopup, $ionicLoading, userRef, userService) {
   var fbID = userService.getFacebookID();
 
   if ( fbID != null ) {
@@ -50,101 +50,124 @@ angular.module('app.controllers')
       }
     });
   }
-
-  /*
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    if ( toState.name == 'tab.account') {
-      $state.reload();
-    }
+ 
+  $ionicModal.fromTemplateUrl('templates/user-update.html', {
+    scope: $scope,
+    animation: 'slide-in-left'
+  }).then(function(modal) {
+    $scope.modal = modal;
   });
-  */
-  // Facebook Login
-  var fbLoginSuccess = function(response) {
-    var authResponse = response.authResponse;
 
-    if ( !authResponse) {
-      fbLoginError("Cant find the authResponse");
-      return;
-    }
-
-    getFacebookProfileInfo(authResponse).then(function(profileInfo) {
-      userRef.update({
-        authResponse: authResponse,
-        userID: profileInfo.id,
-        photoURL: "https://graph.facebook.com/" + authResponse.userID + "/picture?type=square"
-      });
-      $ionicLoading.hide();
-      profPicSuccess();
-      $state.reload();
-    }, function(fail) {
-      console.log('profile info fail', fail);
-      profPicError();
+  $scope.openModal = function() {
+    $scope.user = {};
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  $scope.updateUser = function(user) {
+    userRef.update({
+      age: user.age,
+      phone: user.phone,
+      location: user.location,
+      college: user.college,
+      languages: user.languages,
+      special: user.special,
+      website: user.website,
+      github: user.github
     });
+    userRef.once('value').then(function(snapshot) {
+      $scope.photoURL = snapshot.val().photoURL;
+      $scope.name = snapshot.val().name;
+      $scope.age = snapshot.val().age;
+      $scope.email = snapshot.val().email;
+      $scope.phone = snapshot.val().phone;
+      $scope.location = snapshot.val().location;
+      $scope.college = snapshot.val().college;
+      $scope.languages = snapshot.val().languages;
+      $scope.special = snapshot.val().special;
+      $scope.website = snapshot.val().website;
+      $scope.github = snapshot.val().github;
+      $state.reload();
+    });
+    $scope.modal.hide();
   };
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
 
-  var fbLoginError = function(error) {
-    console.log('fbLoginError', error );
-    $ionicLoading.hide();
-    profPicError();
+  $ionicModal.fromTemplateUrl('templates/pass-update.html', {
+    scope: $scope,
+    animation: 'slide-in-left'
+  }).then(function(mod) {
+    $scope.mod = mod;
+  });
+
+  $scope.openPass = function() {
+    $scope.pass = {};
+    $scope.mod.show();
   };
-
-  var getFacebookProfileInfo = function(authResponse) {
-    var info = $q.defer();
-
-    facebookConnectPlugin.api('/me?fields=email, name&access_token=' + authResponse.accessToken, null,
-      function(response) {
-        console.log(response);
-        info.resolve(response);
-      },
-      function(response) {
-        console.log(response);
-        info.reject(response);
-      });
-
-    return info.promise;
+  $scope.closePass = function() {
+    $scope.mod.hide();
   };
+  $scope.update = function(pass) {
+    var currUser = firebase.auth().currentUser;
+    var currEmail;
+    userRef.once('value').then(function(snapshot) {
+      currEmail = snapshot.val().email;
+      $scope.currPassword = snapshot.val().password;
 
-  $scope.updateFacebook = function() {
-    facebookConnectPlugin.getLoginStatus(function(success) {
-      if ( success.status === 'connected' ) {
-        console.log('getLoginStatus', success.status);
-
-        var user =  userRef.once('value').then(function(snapshot) {
-          $scope.name = snapshot.val().name;
-          $scope.email = snapshot.val().email;
-          $scope.photoURL = snapshot.val().photoURL;
-        });
-
-        if ( !user.userID ) {
-          getFacebookProfileInfo(success.authResponse).then(function(profileInfo) {
+      var credential = firebase.auth.EmailAuthProvider.credential(currEmail, $scope.currPassword);
+      currUser.reauthenticate(credential).then(function() {
+        if ( $scope.currPassword == pass.oldPassword ) {
+          currUser.updatePassword(pass.newPassword).then(function() {
             userRef.update({
-              authResponse: success.authResponse,
-              userID: profileInfo.id,
-              photoURL: "https://graph.facebook.com/" + success.authResponse.userID + "/picture?type=square"
+              password: pass.newPassword
             });
-
-            profPicSuccess();
-            $state.reload();
-          }, function(fail) {
-            console.log('profile info fail', fail);
-            profPicError();
+            var updateSuccess = $ionicPopup.show({
+              title: 'Success!',
+              template: 'Your password has been updated!!',
+              cssClass: 'event-popup',
+              buttons: [{
+                text: 'OK',
+                type: 'button-calm',
+                onTap: function(e) {
+                  updateSuccess.close();
+                }
+              }]
+            });
+            $scope.mod.hide();
+            $scope.modal.hide();
+          }).catch(function(error) {
+            var resetError = $ionicPopup.show({
+              title: 'Error!',
+              template: 'Failed to update password!!',
+              cssClass: 'event-popup',
+              buttons: [{
+                text: 'OK',
+                type: 'button-calm',
+                onTap: function(e) {
+                  updateError.close();
+                }
+              }]
+            });
           });
         }
         else {
-          profPicSuccess();
-          $state.reload();
+          var passError = $ionicPopup.show({
+            title: 'Error!',
+            template: 'Incorrect Password!',
+            cssClass: 'event-popup',
+            buttons: [{
+              text: 'OK',
+              type: 'button-calm',
+              onTap: function(e) {
+                passError.close();
+              }
+            }]
+          });
         }
-      }
-      else {
-        console.log('getLoginStatus', success.status);
-
-        $ionicLoading.show({
-          template: 'Logging in...'
-        });
-
-        facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
-      }
+      });
     });
   };
-
 });

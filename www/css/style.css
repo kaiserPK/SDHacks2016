@@ -160,23 +160,95 @@
   border-radius: 50%;
   background-color: #11c1f3;
   color: #fff;
+  z-index: 100;
   }
   .platform-android #bulb-btn {
     bottom: 0.35rem;
     right: 0.35rem;
   }
   .platform-ios #bulb-btn {
-    top: 31.35rem;
+    top: 38.35rem;
     right: 0.35rem;
 }
 
-#cancel-btn {
-  color: #fff;
-  text-align: right;
+#info-back {
+  margin-top: 0.3rem;
+  margin-left: 12rem;
+}
+
+#member-back {
+  margin-top: 0.3rem;
+  margin-left: 9rem;
+}
+
+#chat-back {
+  margin-top: 0.3rem;
+  margin-left: 11.6rem;
+}
+
+#project-info {
+  margin-top: 0.3rem;
+  margin-left: 10.5rem;
+}
+
+#project-members {
+  margin-top: 0.3rem;
+  margin-left: 7.5rem;
+}
+
+#project-chat {
+  margin-top: 0.3rem;
+  margin-left: 10.1rem;
 }
 
 .bar-header {
   border-bottom: none;
+}
+
+#search-bar {
+  position: fixed;
+  font-size: 1.15rem;
+  padding-left: 0.625rem;
+  margin-left: -0.625rem;
+  margin-top: 0.35rem;
+  border-bottom: 1px groove;
+  width: 110%;
+}
+
+#search-txt {
+  margin-top: 2.5rem;
+  margin-left: -0.595rem;
+  margin-right: -0.594rem;
+}
+
+#search-bulb {
+  margin-left: 50px;
+  margin-top: -30px;
+  font-size: 1.15rem;
+}
+
+.member-txt {
+  margin-top: -0.594rem;
+  margin-left: -0.595rem;
+  margin-right: -0.594rem;
+}
+
+.member-head {
+  background-color: #ffff99;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.member-name {
+  margin-top: 0.625rem;
+  margin-left: -0.625rem;
+  font-size: 1rem;
+}
+
+.member-btn {
+  margin-right: 1.5rem;
+  margin-left: -1rem;
+  font-size: 2.75rem;
 }
 
 .event-popup .popup-head {

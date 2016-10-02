@@ -1,0 +1,13 @@
+<ion-view view-title="My Bulbs">
+  <ion-content class="padding">
+    <ion-list>
+      <input id="search-bar" type="text" placeholder="Search..." ng-model="search">
+      <div id="search-txt">
+        <ion-item ng-repeat="bulb in bulbs" ng-click="showInfo(bulb)">
+          <img class="user-size" ng-src="{{bulb.photoURL}}">
+          <div id="search-bulb"> {{bulb.name}} </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

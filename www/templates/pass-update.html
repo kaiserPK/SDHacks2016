@@ -1,4 +1,11 @@
-<ion-view view-title="Update Password">
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <h1 class="title"> Update Password </h1>
+    <button class="button button-clear" ng-click="closePass()">
+      <span style="font-size: 1.2rem;"> Cancel </span>
+    </button>
+  </ion-header-bar>
+
   <ion-content>
     <div class="text-center padding">
       <img class="logo-size" src="img/logo.png">
@@ -6,15 +13,15 @@
     <div class="list">
       <label class="item item-input item-floating-label">
         <span class="input-label"> Old Password </span>
-        <input type="password" id="field2" placeholder="Old Password" ng-model="user.oldPassword" focus>
+        <input type="password" id="field2" placeholder="Old Password" ng-model="pass.oldPassword" focus>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label"> New Password </span>
-        <input type="password" id="field3" placeholder="New Password" ng-model="user.newPassword">
+        <input type="password" id="field3" placeholder="New Password" ng-model="pass.newPassword">
       </label>
     </div>
     <div class="list list-inset">
-      <button class="button button-block button-calm" ng-click="update(user)">
+      <button class="button button-block button-calm" ng-click="update(pass)">
         Update Password
       </button>
     </div>

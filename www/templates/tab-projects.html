@@ -1,0 +1,13 @@
+<ion-view view-title="My Projects">
+  <ion-content class="padding">
+    <ion-list>
+      <ion-item id="bulb-txt" ng-repeat="project in projects" ng-click="showInfo(project)">
+        {{project.name}}
+        <ion-option-button class="button-assertive" ng-click="delete(project)">
+          <i class="icon ion-alert-circled" style="margin-right: 0.5rem;"></i>
+          Leave Team
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

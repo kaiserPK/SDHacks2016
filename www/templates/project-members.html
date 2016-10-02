@@ -1,0 +1,28 @@
+<ion-view>
+  <ion-nav-title>
+    Project Members
+    <button class="button button-clear" id="project-members" ng-click="goBack()">
+      <span style="font-size: 1.2rem;"> Go Back </span>
+    </button>
+  </ion-nav-title>
+
+  <ion-content class="padding">
+    <ion-list>
+      <div class="member-txt">
+        <ion-item class="member-head">
+          <strong> Current Members </strong>
+        </ion-item>
+        <ion-item ng-repeat="curr in currentMem" ng-click="showInfo(curr)">
+          <div class="row">
+            <div class="col col-20">
+              <img class="user-size" ng-src="{{curr.photoURL}}">
+            </div>
+            <div class="col col-80">
+              <div class="member-name"> {{curr.name}} </div>
+            </div>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

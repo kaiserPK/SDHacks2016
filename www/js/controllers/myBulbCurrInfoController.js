@@ -1,8 +1,13 @@
 angular.module('app.controllers')
-.controller('UserUpdateCtrl', function($scope, $state, userRef) {
-  userRef.once('value').then(function(snapshot) {
+.controller('MyBulbCurrInfoCtrl', function($scope, userService) {
+  var uid = userService.getCurrID();
+  var ref = firebase.database().ref('users/' + uid);
+
+  ref.once('value').then(function(snapshot) {
     $scope.photoURL = snapshot.val().photoURL;
+    $scope.name = snapshot.val().name;
     $scope.age = snapshot.val().age;
+    $scope.email = snapshot.val().email;
     $scope.phone = snapshot.val().phone;
     $scope.location = snapshot.val().location;
     $scope.college = snapshot.val().college;
@@ -11,17 +16,4 @@ angular.module('app.controllers')
     $scope.website = snapshot.val().website;
     $scope.github = snapshot.val().github;
   });
-
-  $scope.updateUser = function(user) {
-    userRef.update({
-      phone: user.phone,
-      location: user.location,
-      college: user.college,
-      languages: user.languages,
-      special: user.special,
-      website: user.website,
-      github: user.github
-    });
-    $state.go('tab.account');
-  };
 });
