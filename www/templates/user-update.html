@@ -6,15 +6,38 @@
     <div class="list">
       <label class="item item-input item-floating-label">
         <span class="input-label"> Phone Number </span>
-        <input type="text" id="field2" placeholder="Phone Number" ng-model="user.phone" focus required>
+        <input type="text" id="field2" placeholder="Phone Number" ng-model="user.phone" ng-init="user.phone=$scope.phone" focus>
       </label>
       <label class="item item-input item-floating-label">
-        <span class="input-label"> Major </span>
-        <input type="text" id="field3" placeholder="Major" ng-model="user.major" required>
+        <span class="input-label"> Location </span>
+        <input type="text" id="field3" placeholder="Location" ng-model="user.location" ng-init="user.location=$scope.location" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> College </span>
+        <input type="text" id="field4" placeholder="College" ng-model="user.college" ng-init="user.college=$scope.college" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Languages </span>
+        <input type="text" id="field5" placeholder="Languages" ng-model="user.languages" ng-init="user.languages=$scope.languages" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Specialization </span>
+        <input type="text" id="field6" placeholder="Specialization" ng-model="user.special" ng-init="user.special=$scope.special" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Personal Website </span>
+        <input type="text" id="field7" placeholder="Personal Website" ng-model="user.website" ng-init="user.website=$scope.website" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Github </span>
+        <input type="text" id="field8" placeholder="Github" ng-model="user.github" ng-init="user.github=$scope.github">
       </label>
     </div>
     <div class="list list-inset">
-      <button class="button button-block tt-maroon" ng-click="updateUser(user)">
+      <a class="button button-block button-calm" href="#/tab/account/user-update/pass-update">
+        Update Password
+      </a>
+      <button class="button button-block button-calm" ng-click="updateUser(user)">
         Update
       </button>
     </div>

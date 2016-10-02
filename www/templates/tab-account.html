@@ -6,20 +6,20 @@
     <div class="list" style="margin-right: -0.125rem;">
       <div class="row item">
         <div class="col col-20 text-center padding">
-          <i class="icon ion-ios-people icon-size"></i>
-        </div>
-        <div class="col col-80">
-          <h2> Class </h2>
-          <p id="account-margin"> Omicron </p>
-        </div>
-      </div>
-      <div class="row item">
-        <div class="col col-20 text-center padding">
           <i class="icon ion-person icon-size"></i>
         </div>
         <div class="col col-80">
           <h2> Name </h2>
           <p id="account-margin"> {{name}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <img id="age-size" src="img/age.jpg">
+        </div>
+        <div class="col col-80">
+          <h2> Age </h2>
+          <p id="account-margin"> {{age}} </p>
         </div>
       </div>
       <div class="row item">
@@ -42,23 +42,65 @@
       </div>
       <div class="row item">
         <div class="col col-20 text-center padding">
-          <i class="icon ion-ios-briefcase icon-size"></i>
+          <i class="icon ion-ios-location icon-size"></i>
         </div>
         <div class="col col-80">
-          <h2> Major </h2>
-          <p id="account-margin"> {{major}} </p>
+          <h2> Location </h2>
+          <p id="account-margin"> {{location}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-university icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> College </h2>
+          <p id="account-margin"> {{college}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-code icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Languages </h2>
+          <p id="account-margin"> {{languages}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-wrench icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Specialization </h2>
+          <p id="account-margin"> {{special}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-ios-world icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Personal Website </h2>
+          <p id="account-margin"> {{website}} </p>
+        </div>
+      </div>
+      <div class="row item">
+        <div class="col col-20 text-center padding">
+          <i class="icon ion-social-github icon-size"></i>
+        </div>
+        <div class="col col-80">
+          <h2> Github </h2>
+          <p id="account-margin"> {{github}} </p>
         </div>
       </div>
     </div>
 
     <div style="margin-top: -10px;">
-      <a class="button button-small button-full tt-maroon" href="#/tab/account/user-update">
+      <a class="button button-small button-full button-calm" href="#/tab/account/user-update">
         Update Profile
       </a>
-      <a class="button button-small button-full tt-maroon" href="#/tab/account/pass-update">
-        Update Password
-      </a>
-      <a class="button button-small button-full tt-maroon" href="#" ng-click="auth.signOut()">
+      <a class="button button-small button-full button-calm" href="#" ng-click="auth.signOut()">
         Sign Out
       </a>
     </div>

@@ -17,16 +17,9 @@
             </div>
           </div>
           <div class="row" id="body-margin">
-            <div class="col col-75">
+            <div class="col">
               <!-- "margin-right: -150px;" -->
               <p style="margin-right: -4.5rem;"> {{message.text}} </p>
-            </div>
-            <div class="col col-25" id="heart-margin">
-              <i class="icon ion-heart" id="like-size" ng-click="like(message)" ng-hide="message.likes"></i>
-              <i class="icon ion-heart" id="liked-size" ng-click="like(message)" ng-show="message.likes"></i>
-              <span style="font-size: 12px;" ng-show="message.likes">
-                {{message.likes}}
-              </span>
             </div>
           </div>
         </div>

@@ -1,0 +1,46 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <h1 class="title"> Light a Bulb! </h1>
+    <button class="button button-clear cancel-btn" ng-click="closeModal()">
+      <span style="font-size: 1.2rem;"> Cancel </span>
+    </button>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="text-center padding">
+      <img class="prof-size" src="img/bulb.png">
+    </div>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Name </span>
+        <input type="text" id="field2" placeholder="Name" ng-model="bulb.name" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Languages </span>
+        <input type="text" id="field3" placeholder="Languages" ng-model="bulb.languages" focus>
+      </label>
+        <label class="item item-input item-floating-label">
+        <span class="input-label"> Category </span>
+        <input type="text" id="field4" placeholder="Category" ng-model="bulb.category" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Skill Level </span>
+        <input type="text" id="field5" placeholder="Skill Level" ng-model="bulb.skill" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Location </span>
+        <input type="text" id="field6" placeholder="Location" ng-model="bulb.location" focus>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"> Description </span>
+        <input type="text" id="field7" placeholder="Description" ng-model="bulb.descript">
+      </label>
+    </div>
+    
+    <div class="list list-inset" id="bulb-margin">
+      <button class="button button-block button-calm" ng-click="addBulb(bulb)">
+        Light It!
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>

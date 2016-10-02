@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('LoginCtrl', function($scope, $firebaseAuth, $state, $ionicPopup, $ionicLoading, $q, userService) {
+.controller('LoginCtrl', function($scope, $firebaseAuth, $state, $ionicPopup, $ionicHistory, $ionicLoading, $q, userService) {
   var auth = firebase.auth();
 
   // Login with email and password
@@ -8,7 +8,32 @@ angular.module('app.controllers')
     auth.signInWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
       if ( firebaseUser.emailVerified ) {
         console.log("Signed in as:", firebaseUser);
-        $state.go('tab.messenger');
+        var ref = firebase.database().ref('users/' + firebaseUser.uid).child('counts');
+        ref.once('value').then(function(snapshot) {
+          var loginCount = snapshot.val().loginCount;
+          if ( loginCount == 0 ) {
+            loginCount++;
+            ref.update({
+              loginCount: loginCount
+            });
+            $state.go('user-info');
+            var firstLogin = $ionicPopup.show({
+              title: 'Welcome to HackAGo!',
+              template: 'Please fill out the following optional fields!',
+              cssClass: 'event-popup',
+              buttons: [{
+                text: 'OK',
+                type: 'button-calm',
+                onTap: function(e) {
+                  firstLogin.close();
+                }
+              }]
+            });
+          }
+          else {
+            $state.go('tab.bulbs');
+          }
+        });
       }
       else {
         var verifyError = $ionicPopup.alert({

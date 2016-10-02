@@ -1,11 +1,11 @@
 angular.module('app.controllers')
 .controller('RegisterCtrl', function($scope, $firebaseAuth, $state, $ionicPopup, userService) {
   var auth = firebase.auth();
-  var imgURL = "img/default.jpeg";
+  var imgURL = "img/default.png";
   var user = null;
 
   $scope.register = function(user) {
-    if ( user.code.toLowerCase() == "garnett" ) {
+    if ( user.password == user.confirm ) {
       auth.createUserWithEmailAndPassword(user.email, user.password).then(function() {
         currUser = auth.currentUser;
         userService.writeUserData(currUser.uid, user.name, user.email, user.password, imgURL);
@@ -14,7 +14,16 @@ angular.module('app.controllers')
         currUser.updateProfile({
           displayName: user.name,
           photoURL: imgURL
-        })
+        });
+        var ref = firebase.database().ref('users/' + currUser.uid).child('counts');
+        ref.update({
+          loginCount: 0,
+          ideaCount: 0,
+          projectCount: 0,
+          searchCount: 0,
+          msgCount: 0,
+          accountCount: 0
+        });
       }).then(function() {
         var signSuccess = $ionicPopup.alert({
           title: 'Success!',
@@ -29,9 +38,9 @@ angular.module('app.controllers')
       });
     }
     else {
-      var codeError = $ionicPopup.alert({
+      var confirmError = $ionicPopup.alert({
         title: 'Error!',
-        template: 'Please enter the correct secret code!'
+        template: 'Your passwords do not match!'
       });
     }
   };

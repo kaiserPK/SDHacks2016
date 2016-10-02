@@ -30,6 +30,18 @@ angular.module('app.services')
         template: 'Please enter an integer!'
       });
     },
+    noActive: function() {
+      var noActive = $ionicPopup.alert({
+        title: 'Error!',
+        template: 'Please enter an Active!'
+      });
+    },
+    noReason: function() {
+      var noReason = $ionicPopup.alert({
+        title: 'Error!',
+        template: 'Please enter a reason!'
+      });
+    },
     not5: function() {
       var not5 = $ionicPopup.alert({
         title: 'Error!',

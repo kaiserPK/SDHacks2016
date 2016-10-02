@@ -8,7 +8,7 @@ angular.module('app.controllers')
       $scope.name = snapshot.val().name;
       $scope.email = snapshot.val().email;
       $scope.phone = snapshot.val().phone;
-      $scope.major = snapshot.val().major;
+      $scope.github = snapshot.val().github;
       $state.reload();
     });
   }
@@ -16,10 +16,38 @@ angular.module('app.controllers')
     userRef.once('value').then(function(snapshot) {
       $scope.photoURL = snapshot.val().photoURL;
       $scope.name = snapshot.val().name;
+      $scope.age = snapshot.val().age;
       $scope.email = snapshot.val().email;
       $scope.phone = snapshot.val().phone;
-      $scope.major = snapshot.val().major;
+      $scope.location = snapshot.val().location;
+      $scope.college = snapshot.val().college;
+      $scope.languages = snapshot.val().languages;
+      $scope.special = snapshot.val().special;
+      $scope.website = snapshot.val().website;
+      $scope.github = snapshot.val().github;
       $state.reload();
+    });
+    userRef.child('counts').once('value').then(function(snapshot) {
+      var accountCount = snapshot.val().accountCount;
+
+      if ( accountCount == 0 ) {
+        accountCount++;
+        userRef.child('counts').update({
+          accountCount: accountCount
+        });
+        var firstAccount = $ionicPopup.show({
+          title: 'Account Tab',
+          template: 'In this tab, you can view and update your account information',
+          cssClass: 'event-popup',
+          buttons: [{
+            text: 'OK',
+            type: 'button-calm',
+            onTap: function(e) {
+              firstAccount.close();
+            }
+          }]
+        });
+      }
     });
   }
 

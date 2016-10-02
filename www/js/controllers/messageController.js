@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('MsgCtrl', function($scope, $firebaseArray, $ionicScrollDelegate, $timeout, userRef, userService) {
+.controller('MsgCtrl', function($scope, $firebaseArray, $ionicPopup, $ionicScrollDelegate, $timeout, userRef, userService) {
   var fbID = userService.getFacebookID();
   var msgRef = firebase.database().ref().child("messages");
   $scope.messages = $firebaseArray(msgRef);
@@ -17,6 +17,28 @@ angular.module('app.controllers')
       $scope.name = snapshot.val().name;
       $scope.email = snapshot.val().email;
     });
+    userRef.child('counts').once('value').then(function(snapshot) {
+      var msgCount = snapshot.val().msgCount;
+
+      if ( msgCount == 0 ) {
+        msgCount++;
+        userRef.child('counts').update({
+          msgCount: msgCount
+        });
+        var firstMsg = $ionicPopup.show({
+          title: 'Messaging Tab',
+          template: 'In this tab, you will be able to communicate with other hackers to discuss projects',
+          cssClass: 'event-popup',
+          buttons: [{
+            text: 'OK',
+            type: 'button-calm',
+            onTap: function(e) {
+              firstMsg.close();
+            }
+          }]
+        });
+      }
+    });
   }
 
   $timeout(function() {
@@ -25,20 +47,18 @@ angular.module('app.controllers')
 
   $scope.like = function(message) {
     var likeRef = firebase.database().ref('messages/' + message.$id);
-
-    if ( $scope.likes == null ) {
-      $scope.likes = 0;
-    }
+    var likes;
+    
     likeRef.on('value', function(snapshot) {
       if ( snapshot.val() != null ) {
-        $scope.likes = snapshot.val().likes;
+        likes = snapshot.val().likes;
       }
     });
 
-    $scope.likes++;
+    likes++;
 
     likeRef.update({
-      likes: $scope.likes
+      likes: likes
     });
   };
 

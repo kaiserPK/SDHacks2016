@@ -26,54 +26,13 @@
   }
   .platform-ios #footer-margin {
     position: static;
-    margin-top: 6.2rem;
+    margin-top: 6.05rem;
 }
 
 #date-margin {
   color: #a9a9a9;
   padding-top: 0.25rem;
   margin-left: 1rem;
-}
-
-#merit-txt {
-  margin-top: -0.9375rem;
-  margin-left: -0.595rem;
-  margin-right: -0.594rem;
-}
-
-#merit-active {
-  margin-top: -0.625rem;
-  padding-left: 1rem;
-  }
-  .platform-android #merit-active {
-    padding-left: 1.5rem;
-}
-
-#merit-body {
-  margin-top: -1.4rem;
-  font-size: 15px;
-  padding-left: 1rem;
-}
-  .platform-android #merit-body {
-    padding-left: 1.5rem;
-}
-
-#merit-date {
-  color: #a9a9a9;
-  padding-top: 0.25rem;
-  margin-left: 1rem;
-}
-
-#merit-footer {
-  margin-bottom: 1.25rem;
-  margin-left: -0.625rem;
-  height: 4.375rem;
-  display: block;
-  width: 105%;
-}
-
-#merit-btn-margin {
-  margin-top: -1.6875rem;
 }
 
 #account-margin {
@@ -100,9 +59,8 @@
     margin-left: 5.5rem;
 }
 
-#merit-amount {
-  padding-left: 1.013rem;
-  text-align: left;
+#bulb-margin {
+  margin-top: -0.8rem;
 }
 
 #like-size {
@@ -129,33 +87,17 @@
   width: 100%;
 }
 
-.tt-maroon {
-  background-color: #800 !important;
-  color: #ffd700;
-}
-
-.list > .tt-maroon:hover {
-  background-color: #800;
-  color: #ffd700;
-}
-
-.tt-gold {
-  background-color: #ffd700 !important;
-  color: #800;
-}
-
-.tab-color {
-  color: #800;
-}
-
 #back-btn-color {
   color: #ffd700;
 }
 
 .tab-details {
-  border-top: 1px groove;
-  padding-top: 7px;
+  color: #fff;
   opacity: 1;
+}
+
+.tab-details.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+  border-bottom: 0 solid #fff;
 }
 
 .footer-button {
@@ -170,13 +112,15 @@
   border: 1px solid #800;
 }
 
-.merit-border {
-  border-top: 1px groove;
+#bulb-txt {
+  margin-top: -0.595rem;
+  margin-left: -0.595rem;
+  margin-right: -0.594rem;
 }
 
 .logo-size {
   height: 32.125vh;
-  width: 18.75vh;
+  width: 32.125vh;
 }
 
 .sm-logo-size {
@@ -187,22 +131,86 @@
 .user-size {
   height: 6vh;
   width: 6vh;
-  border-radius: 10%;
+  border-radius: 50%;
+  margin-left: -0.5rem;
 }
 
 .prof-size {
   height: 15vh;
   width: 15vh;
-  border-radius: 10%;
+  border-radius: 50%;
 }
 
 .icon-size {
   font-size: 2rem;
-  color: #800;
+  color: #11c1f3;
 }
 
 .sm-icon-size {
   font-size: 1.2rem;
+}
+
+#age-size {
+  height: 5vh;
+  width: 5vh;
+}
+
+#bulb-btn {
+  position: fixed;
+  border-radius: 50%;
+  background-color: #11c1f3;
+  color: #fff;
+  }
+  .platform-android #bulb-btn {
+    bottom: 0.35rem;
+    right: 0.35rem;
+  }
+  .platform-ios #bulb-btn {
+    top: 31.35rem;
+    right: 0.35rem;
+}
+
+#cancel-btn {
+  color: #fff;
+  text-align: right;
+}
+
+.bar-header {
+  border-bottom: none;
+}
+
+.event-popup .popup-head {
+  background-color: #d3d3d3;
+  border-bottom: 1px groove;
+  border-radius: 0.6rem 0.6rem 0 0;
+}
+
+.event-popup .popup-title {
+  font-size: 18px;
+}
+
+.event-popup .popup {
+  border-radius: 5%;
+}
+
+.slide-in-left {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%); 
+}
+  
+.slide-in-left.ng-enter, .slide-in-left > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms; 
+}
+
+.slide-in-left.ng-enter-active, .slide-in-left > .ng-enter-active {
+  -webkit-transform: translateX(0);
+  transform: translateX(0); 
+}
+
+.slide-in-left.ng-leave, .slide-in-left > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms; 
 }
 
 input:-webkit-autofill {

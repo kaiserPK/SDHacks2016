@@ -1,1 +1,1 @@
-angular.module('app.controllers', ['firebase']);
+angular.module('app.controllers', ['firebase', 'ionic.closePopup']);

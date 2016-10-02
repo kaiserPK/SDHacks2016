@@ -1,0 +1,27 @@
+<ion-view view-title="Events">
+  <ion-content class="padding">
+    <ion-list>
+      <ion-item ng-repeat="event in events | orderBy: 'date'" ng-click="showInfo(event)">
+        {{event.name}}
+        <p id="event-date">
+          {{event.date}}
+        </p>
+        <p class="item-icon-right">
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </p>
+        <ion-option-button class="tt-maroon" ng-click="addReminder(event)">
+          <i class="icon ion-android-alarm-clock" style="margin-right: 0.5rem;"></i>
+          Set Reminder
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <!-- 
+  <ion-footer-bar class="footer-border" style="margin-bottom: 1rem;">
+    <button class="button button-block tt-maroon" ng-click="addReminders(events)">
+      Set Reminders for all Events
+    </button>
+  </ion-footer-bar>
+  -->
+</ion-view>

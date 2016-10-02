@@ -2,7 +2,7 @@
   <ion-pane>
     <ion-content>
       <div class="text-center padding">
-        <img class="logo-size" src="img/tt.png">
+        <img class="logo-size" src="img/logo.png">
       </div>
       <div class="list">
         <label class="item item-input item-floating-label">
@@ -15,15 +15,15 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label"> Password </span>
-          <input type="password" id="field4" placeholder="Password (5-30 characters)" ng-model="user.password" focus>
+          <input type="password" id="field4" placeholder="Password (5-30 characters)" ng-model="user.password">
         </label>
         <label class="item item-input item-floating-label">
-          <span class="input-label"> Secret Code </span>
-          <input type="password" id="field5" placeholder="Secret Code" ng-model="user.code">
+          <span class="input-label"> Confirm Password </span>
+          <input type="password" id="field5" placeholder="Confirm Password" ng-model="user.confirm">
         </label>
       </div>
       <div class="list list-inset">
-        <button class="button button-block tt-maroon" ng-click="register(user)">
+        <button class="button button-block button-calm" ng-click="register(user)">
           Register
         </button>
       </div>

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.services'])
+angular.module('app', ['ionic', 'firebase', 'ngCordova', 'app.controllers', 'app.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -51,6 +51,12 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.services'])
     controller: 'ForgotPassCtrl'
   })
 
+  .state('user-info', {
+    url: '/user-info',
+    templateUrl: 'templates/user-info.html',
+    controller: 'UserInfoCtrl'
+  })
+
   // setup an abstract state for the tabs directive
   .state('tab', {
     url: '/tab',
@@ -59,6 +65,36 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.services'])
   })
 
   // Each tab has its own nav history stack:
+  .state('tab.bulbs', {
+    url: '/bulbs',
+    views: {
+      'tab-bulbs': {
+        templateUrl: 'templates/tab-bulbs.html',
+        controller: 'BulbsCtrl'
+      }
+    }
+  })
+  
+  .state('tab.projects', {
+    url: '/projects',
+    views: {
+      'tab-projects': {
+        templateUrl: 'templates/tab-projects.html',
+        controller: 'ProjectsCtrl'
+      }
+    }
+  })
+  
+  .state('tab.search', {
+      url: '/search',
+      views: {
+        'tab-search': {
+          templateUrl: 'templates/tab-search.html',
+          controller: 'SearchCtrl'
+        }
+      }
+    })
+
   .state('tab.messenger', {
       url: '/messenger',
       views: {
@@ -78,44 +114,6 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.services'])
       }
     })
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.merit-book', {
-      url: '/merit-book',
-      views: {
-        'tab-merit-book': {
-          templateUrl: 'templates/tab-merit-book.html',
-          controller: 'MeritBookCtrl'
-        }
-      }
-    })
-    .state('tab.merit', {
-      url: '/merit-book/merit',
-      views: {
-        'tab-merit-book': {
-          templateUrl: 'templates/merit.html',
-          controller: 'MeritCtrl'
-        }
-      }
-    })
-
   .state('tab.account', {
       url: '/account',
       views: {
@@ -126,23 +124,23 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.services'])
       }
     })
     .state('tab.user-update', {
-      url: '/account/user-update',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/user-update.html',
-          controller: 'UserUpdateCtrl'
+        url: '/account/user-update',
+        views: {
+          'tab-account': {
+            templateUrl: 'templates/user-update.html',
+            controller: 'UserUpdateCtrl'
+          }
         }
-      }
-    })
-    .state('tab.pass-update', {
-      url: '/account/pass-update',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/pass-update.html',
-          controller: 'PassUpdateCtrl'
+      })
+      .state('tab.pass-update', {
+        url: '/account/user-update/pass-update',
+        views: {
+          'tab-account': {
+            templateUrl: 'templates/pass-update.html',
+            controller: 'PassUpdateCtrl'
+          }
         }
-      }
-    });
+      });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
